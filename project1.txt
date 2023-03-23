@@ -1,0 +1,212 @@
+<html>
+  <head>
+      <title>Assignment# 1</title>
+      <style>
+          .b1{
+              text-align: center;
+          }
+      </style>
+  </head>
+
+  <body>
+      <h1 class="b1">Web Engineeering</h1>
+      <h2  class="b1">Section : T</h2>
+      <h3 class="b1">Assignment # 1</h3>
+
+      <h4>Name : Tuleeb Asif</h4>
+      <h4>Sap Id : 70112800</h4>
+
+      <h2>
+          Create a function that takes two numbers as parameters and returns the sum of those
+          numbers.
+      </h2>
+      <p>Enter two numbers:</p>
+      <input type="number" id="num1" placeholder="First Number">
+      <input type="number" id="num2" placeholder="Second Number">
+      <button onclick="addNumbers()">Add Numbers</button>
+      <h3 id="sum"></h3>
+
+      <h2>
+          Create a program that prompts the user to enter their name and then displays a
+          personalized greeting.
+      </h2>
+      <p>What is your name?</p>
+      <input type="text" id="name">
+      <button onclick="greet()">Greet</button>
+      <h3 id="greeting"></h3>
+
+      <h2>Write a function that takes an array of numbers and returns the average of those numbers.</h2>
+      <p>Enter numbers separated by commas:</p>
+      <input type="text" id="numbers" placeholder="5, 10, 15">
+      <button onclick="findAverage()">Find Average</button>
+      <h3 id="average"></h3>
+
+      <h2>
+          Create a program that prompts the user to enter a number and then displays whether that
+          number is even or odd.
+      </h2>
+      <p>Enter a number:</p>
+      <input type="number" id="number" placeholder="Number">
+      <button onclick="checkEvenOdd()">Check Even/Odd</button>
+      <h3 id="even-odd"></h3>
+
+      <h2>Write a function that takes a string as a parameter and returns the reverse of that string.</h2>
+      <p>Enter a string:</p>
+      <input type="text" id="string" placeholder="String">
+      <button onclick="reverseString()">Reverse String</button>
+      <h3 id="reversed"></h3>
+
+      <h2>
+          Create a program that generates a random number between 1 and 10 and prompts the user
+          to guess that number. The program should then tell the user whether their guess was too
+          high, too low, or correct
+      </h2>
+      <p>Guess a number between 1 and 10:</p>
+      <input type="number" id="guess" placeholder="Number">
+      <button onclick="guessNumber()">Guess</button>
+      <h3 id="guess-result"></h3>
+
+      <h2>
+          Write a function that takes a number as a parameter and returns true if that number is
+          prime, and false otherwise.
+      </h2>
+      <p>Enter a number:</p>
+      <input type="number" id="prime" placeholder="Number">
+      <button onclick="checkPrime()">Check Prime</button>
+      <h3 id="prime-result"></h3>
+
+      <h2>
+          Create a program that prompts the user to enter a sentence and then displays the number
+          of words in that sentence.
+      </h2>
+      <p>Enter a sentence:</p>
+      <input type="text" id="sentence" placeholder="Sentence">
+      <button onclick="countWords()">Count Words</button>
+      <h3 id="word-count"></h3>
+
+      <h2>Write a function that takes an array of strings and returns the longest string in that array.</h2>
+      <p>Enter strings separated by commas:</p>
+      <input type="text" id="strings" placeholder="Apple, Banana, Mango">
+      <button onclick="findLongest()">Find Longest</button>
+      <h3 id="longest"></h3>
+
+      <h2>
+          Create a program that prompts the user to enter their age and then displays a message
+          telling them whether they are old enough to vote. In Pakistan, the voting age is 18.
+      </h2>
+      <p>What is your age?</p>
+      <input type="number" id="age" placeholder="Age">
+      <button onclick="checkVoting()">Check Eligibility</button>
+      <h3 id="voting-result"></h3>
+
+      <script>
+
+          function addNumbers() {
+              let num1 = parseInt(document.getElementById("num1").value);
+              let num2 = parseInt(document.getElementById("num2").value);
+              let result = document.getElementById("sum");
+              result.innerHTML = num1 + num2;
+          }
+
+
+
+
+          function greet() {
+              let name = document.getElementById("name").value;
+              let greeting = document.getElementById("greeting");
+              greeting.innerHTML = "Hello, " + name + "!";
+          }
+
+
+          function findAverage() {
+              let numbers = document.getElementById("numbers").value;
+              let numberArray = numbers.split(",").map(Number);
+              let sum = numberArray.reduce((acc, curr) => acc + curr);
+              let average = sum / numberArray.length;
+              let result = document.getElementById("average");
+              result.innerHTML = "The average is " + average.toFixed(2);
+          }
+
+
+          function checkEvenOdd() {
+              let number = parseInt(document.getElementById("number").value);
+              let result = document.getElementById("even-odd");
+              if (number % 2 == 0) {
+                  result.innerHTML = number + " is even.";
+              } else {
+                  result.innerHTML = number + " is odd.";
+              }
+          }
+
+
+          function reverseString() {
+              let string = document.getElementById("string").value;
+              let reversed = string.split("").reverse().join("");
+              let result = document.getElementById("reversed");
+              result.innerHTML = "The reversed string is " + reversed;
+          }
+
+
+          function guessNumber() {
+              let randomNumber = Math.floor(Math.random() * 10) + 1;
+              let guess = parseInt(document.getElementById("guess").value);
+              let result = document.getElementById("guess-result");
+              if (guess == randomNumber) {
+                  result.innerHTML = "Congratulations! You guessed the number.";
+              } else if (guess < randomNumber) {
+                  result.innerHTML = "Your guess is too low. Try again.";
+              } else {
+                  result.innerHTML = "Your guess is too high. Try again.";
+              }
+          }
+
+
+          function checkPrime() {
+              let number = parseInt(document.getElementById("prime").value);
+              let result = document.getElementById("prime-result");
+              if (number <= 1) {
+                  result.innerHTML = number + " is not prime.";
+                  return;
+              }
+              for (let i = 2; i <= Math.sqrt(number); i++) {
+                  if (number % i == 0) {
+                      result.innerHTML = number + " is not prime.";
+                      return;
+                  }
+              }
+              result.innerHTML = number + " is prime.";
+          }
+
+
+          function countWords() {
+              let sentence = document.getElementById("sentence").value;
+              let words = sentence.split(" ").filter((word) => word != "").length;
+              let result = document.getElementById("word-count");
+              result.innerHTML = "The sentence has " + words + " words.";
+          }
+
+
+          function findLongest() {
+              let strings = document.getElementById("strings").value;
+              let stringArray = strings.split(",");
+              let longest = stringArray.reduce(function (a, b) {
+                  return a.length > b.length ? a : b;
+              });
+              let result = document.getElementById("longest");
+              result.innerHTML = "The longest string is " + longest;
+          }
+
+
+          function checkVoting() {
+              let age = parseInt(document.getElementById("age").value);
+              let result = document.getElementById("voting-result");
+              if (age >= 18) {
+                  result.innerHTML = "You are eligible to vote!";
+              } else {
+                  result.innerHTML = "You are not eligible to vote!";
+              }
+
+          }
+
+      </script>
+
